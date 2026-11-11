@@ -1,0 +1,31 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.venv/
+venv/
+build/
+dist/
+
+# Experiments and model artifacts
+checkpoints/
+outputs/
+runs/
+wandb/
+*.ckpt
+*.pth
+*.pt
+*.npz
+
+# Data are configured locally and are never committed.
+data/
+datasets/
+
+# LaTeX build products
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz

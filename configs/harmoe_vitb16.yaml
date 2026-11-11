@@ -1,0 +1,37 @@
+model:
+  image_encoder: vit_b_16
+  image_resolution: 224
+  text_encoder: Laihaoran/BioClinicalMPBERT
+  text_encoder_frozen: true
+  prompt_template: "There is {disease}."
+  embedding_dim: 768
+
+harmoe:
+  datasets: [mimic, chexpert, chestxray14, padchest]
+  num_layers: 4
+  expert_start_layer: 2
+  expert_rank: 8
+  expert_mode: kv
+  residual_scale: 1.0
+  lambda_orth: 0.01
+  lambda_reg: 1.0e-6
+
+optimization:
+  optimizer: adamw
+  learning_rate: 5.0e-5
+  weight_decay: 0.02
+  batch_size: 32
+  epochs: 100
+  warmup_epochs: 20
+  scheduler: cosine
+  minimum_learning_rate: 1.0e-6
+  mixed_precision: true
+  seed: 42
+
+data:
+  # Set these paths locally. CSVs should contain an image path followed by
+  # dataset-specific labels encoded as 1 (present), 0 (absent), or -1 (unknown).
+  mimic_csv: null
+  chexpert_csv: null
+  chestxray14_csv: null
+  padchest_csv: null
